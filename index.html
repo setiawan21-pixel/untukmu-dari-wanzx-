@@ -1,239 +1,71 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>wanzX</title>
-
-<style>
-body{
-    margin:0;
-    font-family:'Segoe UI', Arial, sans-serif;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    color:white;
-}
-.box{
-    width:90%;
-    max-width:540px;
-    background:rgba(255,255,255,0.12);
-    padding:34px;
-    border-radius:26px;
-    text-align:center;
-    box-shadow:0 22px 50px rgba(0,0,0,0.45);
-}
-.slide{display:none;}
-.slide.active{display:block;}
-
-textarea{
-    width:100%;
-    margin-top:16px;
-    padding:14px;
-    border-radius:14px;
-    border:none;
-    resize:none;
-    font-size:14px;
-}
-
-button{
-    margin-top:24px;
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    background:#6dd5fa;
-    color:#002b40;
-    cursor:pointer;
-    font-size:14px;
-    font-weight:600;
-}
-
-.warn{
-    color:#ffdede;
-    display:none;
-    font-size:13px;
-    margin-top:10px;
-}
-
-.rating{
-    margin-top:20px;
-}
-.rating input{display:none;}
-.rating label{
-    display:inline-block;
-    width:34px;
-    height:34px;
-    line-height:34px;
-    margin:4px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.2);
-    cursor:pointer;
-}
-.rating input:checked + label{
-    background:#6dd5fa;
-    color:#002b40;
-    font-weight:bold;
-    transform:scale(1.1);
-}
-
-.answers{
-    text-align:left;
-    margin-top:22px;
-    background:rgba(0,0,0,0.28);
-    padding:20px;
-    border-radius:18px;
-    font-size:14px;
-    line-height:1.7;
-}
-
-.footer{
-    margin-top:24px;
-    font-size:13px;
-    opacity:0.9;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Game Klik Kotak</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+    }
+    #gameArea {
+      width: 400px;
+      height: 300px;
+      background: white;
+      border: 2px solid #333;
+      margin: 20px auto;
+      position: relative;
+    }
+    #box {
+      width: 40px;
+      height: 40px;
+      background: red;
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="box">
-<h2> haloo  🤍</h2>
+<h2>Game Klik Kotak</h2>
+<p>Skor: <span id="score">0</span></p>
+<p>Waktu: <span id="time">30</span> detik</p>
 
-<!-- SLIDE PEMBUKA -->
-<div class="slide active">
-Kalau kamu ada di sini sekarang,  
-itu berarti kamu sedang bertahan.  
-
-<br><br>
-Tidak semua orang mampu bertahan  
-di saat hidup terasa berat.  
-Dan kamu sudah melakukannya sampai titik ini.
-
-<br><br>
-Ambil waktu sebentar.  
-Jawab dengan jujur, untuk dirimu sendiri.
-</div>
-
-<!-- PERTANYAAN + MOTIVASI 1 -->
-<div class="slide">
-Bagaimana keadaan dirimu hari ini?
-<textarea id="a1" placeholder="Jawab singkat saja, apa adanya"></textarea>
-<div class="warn">Isi dulu ya 🤍</div>
-</div>
-
-<!-- MOTIVASI -->
-<div class="slide">
-Kadang kita tidak butuh solusi.  
-Kita hanya butuh diakui bahwa  
-lelah itu nyata.
-
-<br><br>
-Merasa capek bukan tanda lemah.  
-Itu tanda kamu sudah berusaha.
-</div>
-
-<!-- PERTANYAAN + MOTIVASI 2 -->
-<div class="slide">
-Akhir-akhir ini,  
-apa yang paling sering kamu pikirkan?
-<textarea id="a2" placeholder="Tentang hidup, masa depan, atau dirimu sendiri"></textarea>
-<div class="warn">Tulis pelan-pelan 🤍</div>
-</div>
-
-<!-- MOTIVASI -->
-<div class="slide">
-Hidup tidak selalu harus cepat.  
-Yang penting, kamu tidak berhenti.
-
-<br><br>
-Langkah kecil yang konsisten  
-lebih berarti daripada lari lalu menyerah.
-</div>
-
-<!-- PERTANYAAN + MOTIVASI 3 -->
-<div class="slide">
-Di tengah semua itu,  
-apa satu hal kecil yang masih kamu syukuri?
-<textarea id="a3" placeholder="Sekecil apa pun, tetap berarti"></textarea>
-<div class="warn">Coba diingat 🤍</div>
-</div>
-
-<!-- MOTIVASI -->
-<div class="slide">
-Rasa syukur bukan tentang hidup yang sempurna,  
-tapi tentang hati yang masih mau berharap.
-
-<br><br>
-Selama kamu masih bisa bersyukur,  
-berarti hatimu belum kalah.
-</div>
-
-<!-- SLIDE SCREENSHOT -->
-<div class="slide">
-<strong style="font-size:19px;">Gilang Arif Wicaksono</strong>
-
-<div class="answers" id="result"></div>
-
-<div class="footer">
-Apa pun kondisi hari ini,  
-kamu sudah melakukan yang terbaik  
-dengan versi dirimu saat ini.
-
-<br><br>
-📸 SCREENSHOT halaman ini sebagai pengingat.
-</div>
-</div>
-
-<!-- SLIDE PENUTUP -->
-<div class="slide">
-Tidak semua jawaban harus kamu temukan sekarang.  
-Tidak semua luka harus sembuh hari ini.
-
-<br><br>
-Cukup ingat satu hal:  
-hidupmu punya nilai.  
-Dan kamu pantas menjalani hidup dengan arah yang baik.
-
-<br><br>
-Pelan-pelan, jaga hatimu.  
-Perbaiki dirimu.  
-Dekati hal-hal yang menenangkan jiwamu.
-
-<br><br>
-Karena saat seseorang kembali merawat hatinya,  
-hidupnya akan ikut menemukan jalannya.
-</div>
-
-<button onclick="next()">Lanjut</button>
+<div id="gameArea">
+  <div id="box"></div>
 </div>
 
 <script>
-let idx=0;
-const slides=document.querySelectorAll('.slide');
+  let score = 0;
+  let time = 30;
+  const box = document.getElementById("box");
+  const gameArea = document.getElementById("gameArea");
 
-function next(){
-    const ta=slides[idx].querySelector('textarea');
-    const warn=slides[idx].querySelector('.warn');
+  function moveBox() {
+    const x = Math.random() * (360);
+    const y = Math.random() * (260);
+    box.style.left = x + "px";
+    box.style.top = y + "px";
+  }
 
-    if(ta && ta.value.trim()===""){
-        warn.style.display="block";
-        return;
+  box.onclick = function() {
+    score++;
+    document.getElementById("score").innerText = score;
+    moveBox();
+  };
+
+  moveBox();
+
+  const timer = setInterval(function() {
+    time--;
+    document.getElementById("time").innerText = time;
+    if (time === 0) {
+      clearInterval(timer);
+      alert("Game Over! Skor kamu: " + score);
+      box.style.display = "none";
     }
-
-    slides[idx].classList.remove("active");
-    idx++;
-    slides[idx].classList.add("active");
-
-    if(slides[idx].querySelector("#result")){
-        document.getElementById("result").innerHTML=`
-<b>Refleksi Dirimu:</b><br><br>
-<b>• Keadaan hari ini:</b><br>${a1.value}<br><br>
-<b>• Yang sering dipikirkan:</b><br>${a2.value}<br><br>
-<b>• Hal yang disyukuri:</b><br>${a3.value}
-        `;
-    }
-}
+  }, 1000);
 </script>
 
 </body>
